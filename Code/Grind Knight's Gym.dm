@@ -7,6 +7,8 @@ world
 	icon_size = 32	// 32x32 icon size by default
 	mob = /mob/player
 	view = 9		// show up to 6 tiles outward from center (13x13 view)
+var
+	list/playerList = new()
 
 // Make objects move 8 pixels per tick when walking
 
@@ -22,6 +24,7 @@ turf
 
 obj
 	step_size = 8
+	density = 1
 	Exercise_Equipment
 		icon = 'equipment.dmi'
 
@@ -34,10 +37,22 @@ obj
 
 		Barbell
 			icon_state = "barbell"
+			layer = MOB_LAYER + 1			
 			verb
 				Lift_Barbell()
-					set src in oview(1)
-					usr.Exercise("strength")
+					set src in oview(1)					
+					usr.canMove = FALSE
+					usr.loc = locate(src.x, src.y, src.z)
+					usr.step_x = src.step_x
+					usr.step_y = src.step_y
+					usr.dir = SOUTH
+					animate(src, pixel_y = 16, time = 8)
+					animate(pixel_y = 0, time = 5)
+					spawn(15)
+						usr.Exercise("strength")
+						sleep(2)
+						usr.canMove = TRUE
+					usr << "You begin to lift the barbell."
 
 	Vending_Machine
 		icon = 'vending_machine.dmi'
@@ -45,7 +60,7 @@ obj
 			Purchase_Creatine()
 				set src in oview(1)
 				usr.GetCreatine()
-			
+
 	Dirt_Spot
 		icon = 'dirt_spot.dmi'
 		alpha = 150
@@ -55,10 +70,28 @@ obj
 				usr << "You cleaned up the dirt!"
 				usr.dirtCleaned = 1
 				del src
-
-
+				
 mob
+	Login()
+		..()
+		playerList += src
+
+	Move()
+		if(canMove)
+			..()
+
 	step_size = 8
+	var
+		canMove = TRUE
+		speed = 1
+		strength = 1
+		stamina = 100
+		exerciseCooldown = 0
+		creatineCooldown = 0
+		questsCompleted = 0
+		dirtCleaned = 0
+		list/inventory = list()
+	
 	npc
 		Trainer
 			icon = 'trainer.dmi'
@@ -119,6 +152,13 @@ mob
 				else
 					src << "You don't have any creatine."
 
+			Say(T as text)
+				view(5, src) << "[src] says: [T]"
+
+			Yell(T as text)
+				world << "<b>[src] yells: [T]</b>"
+
+
 		Stat()
 			if(statpanel("Stats"))
 				stat("Name: ", name)
@@ -163,23 +203,10 @@ mob
 			if("creatine" in src.inventory)
 				src << "You already have creatine in your inventory!"
 				return
-			
+
 			src.inventory += "creatine"
 			src << "You got some creatine! It is now in your inventory."
-			
 
 
-		
-	// 		canMove
-	// 			return TRUE
 
-	var
-		canMove = TRUE
-		speed = 1
-		strength = 1
-		stamina = 100
-		exerciseCooldown = 0
-		creatineCooldown = 0
-		questsCompleted = 0
-		dirtCleaned = 0
-		list/inventory = list()
+
