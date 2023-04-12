@@ -127,6 +127,19 @@ mob
 			..()
 			RegenerateStamina()
 		verb
+			Check_Online_Players()
+				usr << "=-=Players Online=-="
+				for(var/mob/i in playerList)
+					usr << i
+				usr << "=-=-=-=-=-=-=-=-=-=-="
+
+			Check_Inventory()
+				usr << "=-=Inventory=-="
+				for(var/i in usr.inventory)
+					usr << i
+				usr << "=-=-=-=-=-=-=-=-=-="
+
+
 			Save_Progress()
 				if(fexists("savefile.sav"))
 					fdel("savefile.sav")
