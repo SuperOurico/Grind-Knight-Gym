@@ -1,76 +1,3 @@
-/*
-	These are simple defaults for your project.
- */
-
-world
-	fps = 25		// 25 frames per second
-	icon_size = 32	// 32x32 icon size by default
-	mob = /mob/player
-	view = 9		// show up to 6 tiles outward from center (13x13 view)
-var
-	list/playerList = new()
-
-// Make objects move 8 pixels per tick when walking
-
-area
-	exercise_room
-
-turf
-	Floors
-		icon = 'floor.dmi'
-
-		Wood_Floor
-			icon_state = "wood"
-
-obj
-	step_size = 8
-	density = 1
-	Exercise_Equipment
-		icon = 'equipment.dmi'
-
-		Treadmill
-			icon_state = "treadmill"
-			verb
-				Use_Treadmill()
-					set src in oview(1)
-					usr.Exercise("speed")
-
-		Barbell
-			icon_state = "barbell"
-			layer = MOB_LAYER + 1			
-			verb
-				Lift_Barbell()
-					set src in oview(1)					
-					usr.canMove = FALSE
-					usr.loc = locate(src.x, src.y, src.z)
-					usr.step_x = src.step_x
-					usr.step_y = src.step_y
-					usr.dir = SOUTH
-					animate(src, pixel_y = 16, time = 8)
-					animate(pixel_y = 0, time = 5)
-					spawn(15)
-						usr.Exercise("strength")
-						sleep(2)
-						usr.canMove = TRUE
-					usr << "You begin to lift the barbell."
-
-	Vending_Machine
-		icon = 'vending_machine.dmi'
-		verb
-			Purchase_Creatine()
-				set src in oview(1)
-				usr.GetCreatine()
-
-	Dirt_Spot
-		icon = 'dirt_spot.dmi'
-		alpha = 150
-		verb
-			Clean_Dirt()
-				set src in oview(1)
-				usr << "You cleaned up the dirt!"
-				usr.dirtCleaned = 1
-				del src
-				
 mob
 	Login()
 		..()
@@ -88,9 +15,10 @@ mob
 		stamina = 100
 		exerciseCooldown = 0
 		creatineCooldown = 0
-		questsCompleted = 0
-		dirtCleaned = 0
+		questsCompleted = 0		
 		list/inventory = list()
+		tmp
+			dirtCleaned = 0
 	
 	npc
 		Trainer
@@ -139,16 +67,23 @@ mob
 					usr << i
 				usr << "=-=-=-=-=-=-=-=-=-="
 
-
 			Save_Progress()
 				if(fexists("savefile.sav"))
 					fdel("savefile.sav")
 				var/savefile/F = new("savefile.sav")
 				Write(F)
+				F["x"] << src.x   
+				F["y"] << src.y   
+				F["z"] << src.z
 			Load_Progress()
 				if(fexists("savefile.sav"))
 					var/savefile/F = new("savefile.sav")
 					Read(F)
+					var/x; var/y; var/z					
+					F["x"] >> x
+					F["y"] >> y
+					F["z"] >> z
+					loc = (locate(x, y, z))	
 
 			Choose_Name()
 				usr.name = input(usr, "What is your name?", "Name") as text
@@ -166,10 +101,17 @@ mob
 					src << "You don't have any creatine."
 
 			Say(T as text)
+				if(CheckArea(/area/spooky_area/))
+					src << "<font color='#aa22af'><b>Nothing happens...</b></font>"
+					return
 				view(5, src) << "[src] says: [T]"
 
 			Yell(T as text)
-				world << "<b>[src] yells: [T]</b>"
+				if(CheckArea(/area/spooky_area/))
+					src << "<font color='#aa22af'><b>Nobody can hear you yell in the spooky area!</b></font>"
+					return
+				world << "<b>[src] yells: [T]</b>"		
+
 
 
 		Stat()
@@ -181,10 +123,11 @@ mob
 				stat("Completed Quests: ", questsCompleted)
 
 	proc
-		CustomMove(direction)
-			if(!canMove)
-				return
-			step(src, direction)
+			
+		CheckArea(area/passedArea)
+			for(var/area/A in range(0, src.loc))
+				if(A.type == passedArea)
+					return TRUE
 
 		Exercise(stat)
 			if(src.exerciseCooldown > world.time)
@@ -219,7 +162,3 @@ mob
 
 			src.inventory += "creatine"
 			src << "You got some creatine! It is now in your inventory."
-
-
-
-

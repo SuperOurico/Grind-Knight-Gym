@@ -14,7 +14,11 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "Code\Grind Knight's Gym.dm"
+#include "Code\Area.dm"
+#include "Code\Mob.dm"
+#include "Code\Obj.dm"
+#include "Code\Turf.dm"
+#include "Code\World.dm"
 #include "Map\Gym.dmm"
 // END_INCLUDE
 
