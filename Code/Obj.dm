@@ -47,3 +47,10 @@ obj
 				usr.dirtCleaned = 1
 				del src
 				
+	Billboard
+		icon = 'billboard.dmi'
+		density = 1
+		verb
+			Read_Billboard()
+				set src in oview(1)
+				usr.AccessBillboard()

@@ -20,5 +20,7 @@
 #include "Code\Turf.dm"
 #include "Code\World.dm"
 #include "Map\Gym.dmm"
+#include "Tips & Tricks\Lists.dm"
+#include "Tips & Tricks\Syntax.dm"
 // END_INCLUDE
 

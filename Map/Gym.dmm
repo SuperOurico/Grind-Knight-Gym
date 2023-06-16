@@ -5,6 +5,7 @@
 "e" = (/mob/npc/Trainer,/turf/Floors/Wood_Floor,/area/exercise_room)
 "f" = (/obj/Vending_Machine,/turf/Floors/Wood_Floor,/area/exercise_room)
 "g" = (/turf,/area/spooky_area)
+"h" = (/obj/Billboard,/turf/Floors/Wood_Floor,/area/exercise_room)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -51,7 +52,7 @@ bbbbbcbbbbbbbdbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
-bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
+bbhbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbebbbbbbfbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
