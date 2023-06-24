@@ -19,10 +19,22 @@ mob
 		list/inventory = list()
 		tmp
 			dirtCleaned = 0
-	
+
+	verb
+		Say(T as text)
+			if(CheckArea(/area/spooky_area/))
+				src << "<font color='#aa22af'><b>Nothing happens...</b></font>"
+				return
+			view(5, src) << "[src] says: [T]"
+
 	npc
 		Trainer
-			icon = 'trainer.dmi'
+			Timothy	
+				icon = 'timothy.dmi'
+			Daisy
+				icon = 'daisy.dmi'
+			Chad
+				icon = 'chad.dmi'
 			verb
 				Talk()
 					set src in oview(1)
@@ -39,6 +51,7 @@ mob
 							usr << "You're doing great! Keep up the hard work, and you'll reach your fitness goals in no time."
 						if("Never mind.")
 							usr << "Alright, let me know if you need anything."
+
 				Complete_Quest()
 					set src in oview(1)
 					if(usr.dirtCleaned == 1)
@@ -48,6 +61,8 @@ mob
 						usr.dirtCleaned = 0
 					else
 						usr << "Go clean up the dirt, lazy bones!"
+
+
 
 	player
 		icon = 'player.dmi'
@@ -100,11 +115,7 @@ mob
 				else
 					src << "You don't have any creatine."
 
-			Say(T as text)
-				if(CheckArea(/area/spooky_area/))
-					src << "<font color='#aa22af'><b>Nothing happens...</b></font>"
-					return
-				view(5, src) << "[src] says: [T]"
+
 
 			Yell(T as text)
 				if(CheckArea(/area/spooky_area/))

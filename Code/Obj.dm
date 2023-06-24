@@ -15,6 +15,7 @@ obj
 			icon_state = "barbell"
 			layer = MOB_LAYER + 1			
 			verb
+				
 				Lift_Barbell()
 					set src in oview(1)					
 					usr.canMove = FALSE

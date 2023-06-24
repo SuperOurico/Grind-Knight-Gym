@@ -2,10 +2,12 @@
 "b" = (/turf/Floors/Wood_Floor,/area/exercise_room)
 "c" = (/obj/Exercise_Equipment/Treadmill,/turf/Floors/Wood_Floor,/area/exercise_room)
 "d" = (/obj/Exercise_Equipment/Barbell,/turf/Floors/Wood_Floor,/area/exercise_room)
-"e" = (/mob/npc/Trainer,/turf/Floors/Wood_Floor,/area/exercise_room)
 "f" = (/obj/Vending_Machine,/turf/Floors/Wood_Floor,/area/exercise_room)
 "g" = (/turf,/area/spooky_area)
 "h" = (/obj/Billboard,/turf/Floors/Wood_Floor,/area/exercise_room)
+"i" = (/mob/npc/Trainer/Timothy,/turf/Floors/Wood_Floor,/area/exercise_room)
+"j" = (/mob/npc/Trainer/Daisy,/turf/Floors/Wood_Floor,/area/exercise_room)
+"k" = (/mob/npc/Trainer/Chad,/turf/Floors/Wood_Floor,/area/exercise_room)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -53,8 +55,8 @@ bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbhbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
-bbbbbbbbbebbbbbbfbbbbbgggggggggggggggggggggggggggg
-bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
+bbbbbbbbbbbbbbbbfbbbbbgggggggggggggggggggggggggggg
+bbbbbbbijkbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg

@@ -21,6 +21,7 @@
 #include "Code\World.dm"
 #include "Map\Gym.dmm"
 #include "Tips & Tricks\Lists.dm"
+#include "Tips & Tricks\Loops.dm"
 #include "Tips & Tricks\Syntax.dm"
 // END_INCLUDE
 
