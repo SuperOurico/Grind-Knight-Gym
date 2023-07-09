@@ -15,7 +15,7 @@ mob
 		stamina = 100
 		exerciseCooldown = 0
 		creatineCooldown = 0
-		questsCompleted = 0		
+		questsCompleted = 0
 		list/inventory = list()
 		tmp
 			dirtCleaned = 0
@@ -29,7 +29,7 @@ mob
 
 	npc
 		Trainer
-			Timothy	
+			Timothy
 				icon = 'timothy.dmi'
 			Daisy
 				icon = 'daisy.dmi'
@@ -87,18 +87,18 @@ mob
 					fdel("savefile.sav")
 				var/savefile/F = new("savefile.sav")
 				Write(F)
-				F["x"] << src.x   
-				F["y"] << src.y   
+				F["x"] << src.x
+				F["y"] << src.y
 				F["z"] << src.z
 			Load_Progress()
 				if(fexists("savefile.sav"))
 					var/savefile/F = new("savefile.sav")
 					Read(F)
-					var/x; var/y; var/z					
+					var/x; var/y; var/z
 					F["x"] >> x
 					F["y"] >> y
 					F["z"] >> z
-					loc = (locate(x, y, z))	
+					loc = (locate(x, y, z))
 
 			Choose_Name()
 				usr.name = input(usr, "What is your name?", "Name") as text
@@ -121,7 +121,7 @@ mob
 				if(CheckArea(/area/spooky_area/))
 					src << "<font color='#aa22af'><b>Nobody can hear you yell in the spooky area!</b></font>"
 					return
-				world << "<b>[src] yells: [T]</b>"		
+				world << "<b>[src] yells: [T]</b>"
 
 
 
@@ -134,7 +134,7 @@ mob
 				stat("Completed Quests: ", questsCompleted)
 
 	proc
-			
+
 		CheckArea(area/passedArea)
 			for(var/area/A in range(0, src.loc))
 				if(A.type == passedArea)
