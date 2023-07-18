@@ -23,5 +23,6 @@
 #include "Tips & Tricks\Lists.dm"
 #include "Tips & Tricks\Loops.dm"
 #include "Tips & Tricks\Syntax.dm"
+#include "Tips & Tricks\Usr and Src.dm"
 // END_INCLUDE
 

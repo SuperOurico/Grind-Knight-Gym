@@ -2,11 +2,11 @@
 /*
 MAP_ZOOM: 1.000
 LAST_COMPILE_TIME: 1688905356
-DIR: Code Icons Map Tips & Tricks 
+DIR: Code Icons Map 
 AUTO_FILE_DIR: ON
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 514.1589
-WINDOW: Code\Mob.dm
-FILE: Code\Mob.dm
+WINDOW: Icons\explosion.dmi
+FILE: Icons\explosion.dmi
 */
 // END_INTERNALS

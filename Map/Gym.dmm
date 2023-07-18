@@ -2,6 +2,7 @@
 "b" = (/turf/Floors/Wood_Floor,/area/exercise_room)
 "c" = (/obj/Exercise_Equipment/Treadmill,/turf/Floors/Wood_Floor,/area/exercise_room)
 "d" = (/obj/Exercise_Equipment/Barbell,/turf/Floors/Wood_Floor,/area/exercise_room)
+"e" = (/obj/Button,/turf/Floors/Wood_Floor,/area/exercise_room)
 "f" = (/obj/Vending_Machine,/turf/Floors/Wood_Floor,/area/exercise_room)
 "g" = (/turf,/area/spooky_area)
 "h" = (/obj/Billboard,/turf/Floors/Wood_Floor,/area/exercise_room)
@@ -58,6 +59,6 @@ bbhbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbfbbbbbgggggggggggggggggggggggggggg
 bbbbbbbijkbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
-bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
+bbbbbbbbbbbbbebbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 "}

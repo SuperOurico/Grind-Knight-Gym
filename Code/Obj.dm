@@ -27,6 +27,7 @@ obj
 					animate(pixel_y = 0, time = 5)
 					spawn(15)
 						usr.Exercise("strength")
+						usr << sound('Sounds/Clank_10.mp3', 0, volume = 100, channel = 1)
 						sleep(2)
 						usr.canMove = TRUE
 					usr << "You begin to lift the barbell."
