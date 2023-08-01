@@ -15,6 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "Code\Area.dm"
+#include "Code\Items.dm"
 #include "Code\Mob.dm"
 #include "Code\Obj.dm"
 #include "Code\Turf.dm"

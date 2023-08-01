@@ -35,7 +35,8 @@ obj
 		verb
 			Purchase_Creatine()
 				set src in oview(1)
-				usr.GetCreatine()
+				usr.Give_Item(/item/creatine)	// Give the usr 1 creatine using our new proc!
+				//usr.GetCreatine()//We don't need this verb anymore.
 
 	Dirt_Spot
 		icon = 'dirt_spot.dmi'

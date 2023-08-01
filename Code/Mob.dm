@@ -16,7 +16,8 @@ mob
 		exerciseCooldown = 0
 		creatineCooldown = 0
 		questsCompleted = 0		
-		list/inventory = list()
+		//list/inventory = list()	// Old inventory. Left as a reference. Check Items.dm.
+		
 		tmp
 			dirtCleaned = 0
 	
@@ -61,11 +62,12 @@ mob
 					usr << i
 				usr << "=-=-=-=-=-=-=-=-=-=-="
 
-			Check_Inventory()
-				usr << "=-=Inventory=-="
-				for(var/i in usr.inventory)
-					usr << i
-				usr << "=-=-=-=-=-=-=-=-=-="
+// Old Check_Inventory(). Unused now. Check Items.dm.
+			// Check_Inventory()
+			// 	usr << "=-=Inventory=-="
+			// 	for(var/i in usr.inventory)
+			// 		usr << i
+			// 	usr << "=-=-=-=-=-=-=-=-=-="
 
 			Save_Progress()
 				if(fexists("savefile.sav"))
@@ -92,13 +94,13 @@ mob
 				if(world.time < src.creatineCooldown)
 					src << "It's too soon for another serving!"
 					return
-				if("creatine" in src.inventory)
-					src.inventory -= "creatine"
+
+	// Updated our Consume_Creatine right here to use our new item system.
+				if(src.Use_Item(/item/creatine))
 					src.stamina += 20
 					creatineCooldown = world.time + 3000
 					src << "You took a heaping scoop of creatine! Your stamina regeneration is temporarily increased."
-				else
-					src << "You don't have any creatine."
+
 
 			Say(T as text)
 				if(CheckArea(/area/spooky_area/))
@@ -155,10 +157,12 @@ mob
 			spawn(10)
 				RegenerateStamina()
 
-		GetCreatine()
-			if("creatine" in src.inventory)
-				src << "You already have creatine in your inventory!"
-				return
+// Old proc. Left as a reference.
+		// GetCreatine()
+		// 	if("creatine" in src.inventory)
+		// 		src << "You already have creatine in your inventory!"
+		// 		return
 
-			src.inventory += "creatine"
-			src << "You got some creatine! It is now in your inventory."
+		// 	src.inventory += "creatine"
+		// 	src << "You got some creatine! It is now in your inventory."
+
