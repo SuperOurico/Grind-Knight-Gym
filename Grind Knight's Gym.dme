@@ -8,6 +8,7 @@
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 #define FILE_DIR "Icons"
+#define FILE_DIR "Sounds"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -15,6 +16,8 @@
 
 // BEGIN_INCLUDE
 #include "Code\Area.dm"
+#include "Code\Maptext.dm"
+#include "Code\Mob Procs.dm"
 #include "Code\Mob.dm"
 #include "Code\Obj.dm"
 #include "Code\Turf.dm"
@@ -22,6 +25,7 @@
 #include "Map\Gym.dmm"
 #include "Tips & Tricks\Lists.dm"
 #include "Tips & Tricks\Loops.dm"
+#include "Tips & Tricks\Passing Args.dm"
 #include "Tips & Tricks\Syntax.dm"
 #include "Tips & Tricks\Usr and Src.dm"
 // END_INCLUDE

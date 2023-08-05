@@ -2,6 +2,7 @@ mob
 	Login()
 		..()
 		playerList += src
+		loc = locate(10, 6, 1)
 
 	Move()
 		if(canMove)
@@ -15,6 +16,7 @@ mob
 		stamina = 100
 		exerciseCooldown = 0
 		creatineCooldown = 0
+		strikingCooldown = 0
 		questsCompleted = 0
 		list/inventory = list()
 		tmp
@@ -65,7 +67,11 @@ mob
 
 
 	player
-		icon = 'player.dmi'
+		icon = 'BaseWhite.dmi'
+		pixel_x = -16
+		pixel_y = -12
+		bound_width = 32
+		bound_height = 32
 		Login()
 			..()
 			RegenerateStamina()
@@ -155,7 +161,7 @@ mob
 			if(stat == "speed")
 				src.speed += 1
 			else if(stat == "strength")
-				src.strength += 1
+				src.strength += 5
 
 			src << "Your [stat] increased to [src.vars[stat]]!"
 

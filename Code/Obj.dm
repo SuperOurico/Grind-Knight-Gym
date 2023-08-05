@@ -1,6 +1,8 @@
 obj
 	step_size = 8
 	density = 1
+	var/canBeDamaged = 0
+	var/hitPoints = 1
 	Exercise_Equipment
 		icon = 'equipment.dmi'
 
@@ -56,3 +58,11 @@ obj
 			Read_Billboard()
 				set src in oview(1)
 				usr.AccessBillboard()
+
+
+obj		
+	Punching_Bag
+		icon = 'punchingbag.dmi'
+		name = "Punching Bag"
+		canBeDamaged = 1	//could also be written as canBeDamaged = TRUE
+		hitPoints = 50

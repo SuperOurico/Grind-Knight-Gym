@@ -28,9 +28,9 @@ obj
 
 			Smash()
 				set category = "Button"
-				var/E = new/obj/Explosion/
+				var/obj/Explosion/E = new
 				set src in orange(1)
-				E:loc = src.loc
+				E.loc = src.loc
 				src.loc = null
 				usr << sound('Sounds/Explosion3.mp3', 0, volume = 100, channel = 1)
 
