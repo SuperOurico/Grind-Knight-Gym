@@ -18,7 +18,6 @@ mob
 		creatineCooldown = 0
 		strikingCooldown = 0
 		questsCompleted = 0
-		list/inventory = list()
 		tmp
 			dirtCleaned = 0
 
@@ -82,12 +81,6 @@ mob
 					usr << i
 				usr << "=-=-=-=-=-=-=-=-=-=-="
 
-			Check_Inventory()
-				usr << "=-=Inventory=-="
-				for(var/i in usr.inventory)
-					usr << i
-				usr << "=-=-=-=-=-=-=-=-=-="
-
 			Save_Progress()
 				if(fexists("savefile.sav"))
 					fdel("savefile.sav")
@@ -113,13 +106,7 @@ mob
 				if(world.time < src.creatineCooldown)
 					src << "It's too soon for another serving!"
 					return
-				if("creatine" in src.inventory)
-					src.inventory -= "creatine"
-					src.stamina += 20
-					creatineCooldown = world.time + 3000
-					src << "You took a heaping scoop of creatine! Your stamina regeneration is temporarily increased."
-				else
-					src << "You don't have any creatine."
+				src.Use_Item(/item/creatine)
 
 
 
@@ -171,11 +158,3 @@ mob
 
 			spawn(10)
 				RegenerateStamina()
-
-		GetCreatine()
-			if("creatine" in src.inventory)
-				src << "You already have creatine in your inventory!"
-				return
-
-			src.inventory += "creatine"
-			src << "You got some creatine! It is now in your inventory."
