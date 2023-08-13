@@ -4,17 +4,16 @@ item
       description = "Default description."
       stackLimit = 1
 
-itemSlot
-   var
-      item/storedItem = null
-      quantity = 0
-
 item
    creatine
       name = "Creatine"
       description = "Get the most out of your workout with this action packed supplement!"
-      stackLimit = 10
+      stackLimit = 3
 
+itemSlot
+   var
+      item/storedItem = null
+      quantity = 0
 
 mob
    var
@@ -25,6 +24,15 @@ mob
       . = ..()
       for(var/i = 0; i < 5; i++)
          src.inventory.Add(new/itemSlot)
+
+mob
+   verb
+      Check_Inventory()
+         src << "=-=Inventory=-="
+         for(var/itemSlot/i in src.inventory)
+            if(i.storedItem)
+               src << "[i.storedItem] x[i.quantity]"
+         src << "=-=-=-=-=-=-=-=-=-="
 
 mob
    verb
@@ -76,8 +84,9 @@ mob
                
                // Perform the specific action for using the item, you can add cases or conditions here
                if(istype(i.storedItem, /item/creatine))
-                  src << "You feel a surge of strength!"
-                  // You could apply a strength buff here, for example
+                  src.stamina += 20
+                  creatineCooldown = world.time + 3000
+                  src << "You took a heaping scoop of creatine! Your stamina regeneration is temporarily increased."
 
                // If the quantity reaches 0, clear the slot
                if(i.quantity == 0)
@@ -88,13 +97,3 @@ mob
          // If we got here, the item was not found
          src << "You don't have any [itemToUse] in your inventory!"
          return FALSE
-
-
-mob
-   verb
-      Check_Inventory()
-         src << "=-=Inventory=-="
-         for(var/itemSlot/i in src.inventory)
-            if(i.storedItem)
-               src << "[i.storedItem] x[i.quantity]"
-         src << "=-=-=-=-=-=-=-=-=-="

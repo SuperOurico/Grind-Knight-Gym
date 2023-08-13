@@ -96,11 +96,7 @@ mob
 					return
 
 	// Updated our Consume_Creatine right here to use our new item system.
-				if(src.Use_Item(/item/creatine))
-					src.stamina += 20
-					creatineCooldown = world.time + 3000
-					src << "You took a heaping scoop of creatine! Your stamina regeneration is temporarily increased."
-
+				src.Use_Item(/item/creatine)
 
 			Say(T as text)
 				if(CheckArea(/area/spooky_area/))
