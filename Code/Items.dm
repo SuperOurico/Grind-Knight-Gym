@@ -1,4 +1,4 @@
-item
+item  // Create item type here.
    var
       name = "Base Item"
       description = "Default description."
