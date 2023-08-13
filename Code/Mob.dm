@@ -2,6 +2,7 @@ mob
 	Login()
 		..()
 		playerList += src
+		loc = locate(10, 6, 1)
 
 	Move()
 		if(canMove)
@@ -15,15 +16,27 @@ mob
 		stamina = 100
 		exerciseCooldown = 0
 		creatineCooldown = 0
-		questsCompleted = 0		
-		//list/inventory = list()	// Old inventory. Left as a reference. Check Items.dm.
-		
+		strikingCooldown = 0
+		questsCompleted = 0
+		list/inventory = list()
 		tmp
 			dirtCleaned = 0
-	
+
+	verb
+		Say(T as text)
+			if(CheckArea(/area/spooky_area/))
+				src << "<font color='#aa22af'><b>Nothing happens...</b></font>"
+				return
+			view(5, src) << "[src] says: [T]"
+
 	npc
 		Trainer
-			icon = 'trainer.dmi'
+			Timothy
+				icon = 'timothy.dmi'
+			Daisy
+				icon = 'daisy.dmi'
+			Chad
+				icon = 'chad.dmi'
 			verb
 				Talk()
 					set src in oview(1)
@@ -40,6 +53,7 @@ mob
 							usr << "You're doing great! Keep up the hard work, and you'll reach your fitness goals in no time."
 						if("Never mind.")
 							usr << "Alright, let me know if you need anything."
+
 				Complete_Quest()
 					set src in oview(1)
 					if(usr.dirtCleaned == 1)
@@ -50,8 +64,14 @@ mob
 					else
 						usr << "Go clean up the dirt, lazy bones!"
 
+
+
 	player
-		icon = 'player.dmi'
+		icon = 'BaseWhite.dmi'
+		pixel_x = -16
+		pixel_y = -12
+		bound_width = 32
+		bound_height = 32
 		Login()
 			..()
 			RegenerateStamina()
@@ -62,30 +82,23 @@ mob
 					usr << i
 				usr << "=-=-=-=-=-=-=-=-=-=-="
 
-// Old Check_Inventory(). Unused now. Check Items.dm.
-			// Check_Inventory()
-			// 	usr << "=-=Inventory=-="
-			// 	for(var/i in usr.inventory)
-			// 		usr << i
-			// 	usr << "=-=-=-=-=-=-=-=-=-="
-
 			Save_Progress()
 				if(fexists("savefile.sav"))
 					fdel("savefile.sav")
 				var/savefile/F = new("savefile.sav")
 				Write(F)
-				F["x"] << src.x   
-				F["y"] << src.y   
+				F["x"] << src.x
+				F["y"] << src.y
 				F["z"] << src.z
 			Load_Progress()
 				if(fexists("savefile.sav"))
 					var/savefile/F = new("savefile.sav")
 					Read(F)
-					var/x; var/y; var/z					
+					var/x; var/y; var/z
 					F["x"] >> x
 					F["y"] >> y
 					F["z"] >> z
-					loc = (locate(x, y, z))	
+					loc = (locate(x, y, z))
 
 			Choose_Name()
 				usr.name = input(usr, "What is your name?", "Name") as text
@@ -94,21 +107,14 @@ mob
 				if(world.time < src.creatineCooldown)
 					src << "It's too soon for another serving!"
 					return
-
-	// Updated our Consume_Creatine right here to use our new item system.
+				// Updated our Consume_Creatine right here to use our new item system.
 				src.Use_Item(/item/creatine)
-
-			Say(T as text)
-				if(CheckArea(/area/spooky_area/))
-					src << "<font color='#aa22af'><b>Nothing happens...</b></font>"
-					return
-				view(5, src) << "[src] says: [T]"
 
 			Yell(T as text)
 				if(CheckArea(/area/spooky_area/))
 					src << "<font color='#aa22af'><b>Nobody can hear you yell in the spooky area!</b></font>"
 					return
-				world << "<b>[src] yells: [T]</b>"		
+				world << "<b>[src] yells: [T]</b>"
 
 
 
@@ -121,7 +127,7 @@ mob
 				stat("Completed Quests: ", questsCompleted)
 
 	proc
-			
+
 		CheckArea(area/passedArea)
 			for(var/area/A in range(0, src.loc))
 				if(A.type == passedArea)
@@ -142,7 +148,7 @@ mob
 			if(stat == "speed")
 				src.speed += 1
 			else if(stat == "strength")
-				src.strength += 1
+				src.strength += 5
 
 			src << "Your [stat] increased to [src.vars[stat]]!"
 
@@ -152,13 +158,3 @@ mob
 
 			spawn(10)
 				RegenerateStamina()
-
-// Old proc. Left as a reference.
-		// GetCreatine()
-		// 	if("creatine" in src.inventory)
-		// 		src << "You already have creatine in your inventory!"
-		// 		return
-
-		// 	src.inventory += "creatine"
-		// 	src << "You got some creatine! It is now in your inventory."
-
