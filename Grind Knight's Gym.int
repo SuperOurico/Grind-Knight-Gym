@@ -6,7 +6,7 @@ DIR: Code Icons Map
 AUTO_FILE_DIR: ON
 MAP_ICON_TYPE: 0
 LAST_COMPILE_VERSION: 514.1589
-WINDOW: Icons\BaseWhite.dmi
-FILE: Icons\BaseWhite.dmi
+WINDOW: Icons\resource_visual.dmi
+FILE: Icons\resource_visual.dmi
 */
 // END_INTERNALS

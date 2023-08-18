@@ -16,6 +16,7 @@
 
 // BEGIN_INCLUDE
 #include "Code\Area.dm"
+#include "Code\Interface.dm"
 #include "Code\Items.dm"
 #include "Code\Maptext.dm"
 #include "Code\Mob Procs.dm"

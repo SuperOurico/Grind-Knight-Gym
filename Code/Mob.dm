@@ -1,8 +1,13 @@
 mob
 	Login()
 		..()
-		playerList += src
 		loc = locate(10, 6, 1)
+		playerList += src
+		client.screen.Add(Interface_Overlay)
+		Interface_Overlay.vis_contents.Add(new/obj/action_buttons/actions)
+		Interface_Overlay.vis_contents.Add(new/obj/resource_dynamic_bars/resource_values)
+		Interface_Overlay.vis_contents.Add(new/obj/resource_bars/resources)
+		
 
 	Move()
 		if(canMove)

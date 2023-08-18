@@ -28,15 +28,15 @@ mob/verb
 
 
 
-
-
 	Jab()
 		set category = "Striking"
-		if(world.time < strikingCooldown) return
+		var staminacost = 10
+		if(world.time < strikingCooldown || stamina < staminacost) return
 		flick("punch", usr)
 		for(var/obj/O in get_step(usr, dir))
 			if(O.canBeDamaged)
 				strikingCooldown = world.time + 20
+				stamina -= staminacost
 				var/modStrength = strength * 1.25
 				var/modSpeed = speed * 1.25
 				var/staticDamage = 5
@@ -45,11 +45,13 @@ mob/verb
 
 	Roundhouse()
 		set category = "Striking"
-		if(world.time < strikingCooldown) return
+		var staminacost = 15
+		if(world.time < strikingCooldown || stamina < staminacost) return
 		flick("punch", usr)
 		for(var/obj/O in get_step(usr, dir))
 			if(O.canBeDamaged)
 				strikingCooldown = world.time + 40
+				stamina -= staminacost
 				var/modStrength = strength * 3
 				var/staticDamage = 8
 				var/color = "#7e75fa"			
