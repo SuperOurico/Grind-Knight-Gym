@@ -1,12 +1,12 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1688905356
-DIR: Code Icons Map 
+LAST_COMPILE_TIME: 1692744089
+DIR: Code Icons Map Tips & Tricks 
 AUTO_FILE_DIR: ON
 MAP_ICON_TYPE: 0
-LAST_COMPILE_VERSION: 514.1589
-WINDOW: Icons\resource_visual.dmi
-FILE: Icons\resource_visual.dmi
+LAST_COMPILE_VERSION: 515.1612
+WINDOW: Code\Maptext.dm
+FILE: Code\Maptext.dm
 */
 // END_INTERNALS

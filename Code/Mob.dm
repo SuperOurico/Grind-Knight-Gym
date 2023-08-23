@@ -1,12 +1,21 @@
+//Login() handled below.
 mob
 	Login()
 		..()
 		loc = locate(10, 6, 1)
 		playerList += src
 		client.screen.Add(Interface_Overlay)
+
+		//Add action buttons to the Interface_Overlay screen object.
 		Interface_Overlay.vis_contents.Add(new/obj/action_buttons/actions)
+
+		//Add stamina bar and its holder to the Interface_Overlay screen object.
 		Interface_Overlay.vis_contents.Add(new/obj/resource_dynamic_bars/resource_values)
 		Interface_Overlay.vis_contents.Add(new/obj/resource_bars/resources)
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		
 
 	Move()
@@ -44,7 +53,7 @@ mob
 			verb
 				Talk()
 					set src in oview(1)
-					var/response = alert(usr, "Hi, I'm your personal trainer. What can I help you with?", "Personal Trainer", "Can I get a job?", "Just some encouragement.", "Never mind.")
+					var/response = alert(usr, "Hi, I'm [src], your personal trainer. What can I help you with?", "Personal Trainer", "Can I get a job?", "Just some encouragement.", "Never mind.")
 
 					switch(response)
 						if("Can I get a job?")

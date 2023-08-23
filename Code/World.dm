@@ -22,6 +22,9 @@ proc/Global_Master_Loop()
 				M.client.UpdateBars()
 	catch()
 
+
+
+//These two procs below will update the stamina bar!
 client
 	proc
 		UpdateBars()
