@@ -15,6 +15,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "Move Test.dm"
 #include "Code\Area.dm"
 #include "Code\Items.dm"
 #include "Code\Maptext.dm"
