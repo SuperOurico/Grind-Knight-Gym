@@ -15,7 +15,9 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "Move Test.dm"
 #include "Code\Area.dm"
+#include "Code\Camera Controller.dm"
 #include "Code\Items.dm"
 #include "Code\Maptext.dm"
 #include "Code\Mob Procs.dm"
@@ -24,6 +26,7 @@
 #include "Code\Turf.dm"
 #include "Code\World.dm"
 #include "Map\Gym.dmm"
+#include "Tips & Tricks\Interface.dm"
 #include "Tips & Tricks\Lists.dm"
 #include "Tips & Tricks\Loops.dm"
 #include "Tips & Tricks\Passing Args.dm"

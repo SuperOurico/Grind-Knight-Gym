@@ -10,6 +10,7 @@
 "j" = (/mob/npc/Trainer/Daisy,/turf/Floors/Wood_Floor,/area/exercise_room)
 "k" = (/mob/npc/Trainer/Chad,/turf/Floors/Wood_Floor,/area/exercise_room)
 "l" = (/obj/Punching_Bag,/turf/Floors/Wood_Floor,/area/exercise_room)
+"m" = (/turf/Floors/Wood_Floor,/area/TestArea)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -55,7 +56,7 @@ bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbcbbbbbbbdbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbblbbbbbbbbbbbbgggggggggggggggggggggggggggg
-bbbbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
+bbbbbbmbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbhbbbbbbbbbbbbbbbbbbbgggggggggggggggggggggggggggg
 bbbbbbbbbbbbbbbbfbbbbbgggggggggggggggggggggggggggg
 bbbbbbbijkbbbbbbbbbbbbgggggggggggggggggggggggggggg
