@@ -3,27 +3,49 @@
 mob/var/tmp/obj/screen/Interface_Overlay = new
 
 //This is a list of objects that are displayed on the user's screen. 
-
-
-
-
 obj
 	screen	
 		screen_loc = "1, 1" //The object's screen_loc variable controls where it appears (if it appears at all). 
 		plane = 1
 
-//This allows one to create the elements of a graphical user interface, 
-//with such features as buttons, drag/drop areas, and stat monitors.
 
+client
+	proc
+		SetupHUD()
+			screen.Add(mob.Interface_Overlay)
 
+			// Add action buttons and resource bars to the Interface_Overlay screen object.
+			var/action_buttons = new/obj/action_buttons/actions
+			var/resource_values = new/obj/resource_dynamic_bars/resource_values
+			var/resources = new/obj/resource_bars/resources
 
+			mob.Interface_Overlay.vis_contents.Add(action_buttons, resource_values, resources)
 
+client
+	proc
+		UpdateBars()
+			var/stamPercent = clamp(mob.stamina / 100, 0, 1) // Calculate and clamp the stamina percentage
+			var/staminaVisual = findElementInVisContents(/obj/resource_visuals/Stamina_Visual) // Find the stamina visual object so we know what to scale.
+			
+			if(staminaVisual) // Check if the stamina visual object was found
+				var/translatePos = (78 - (78 * stamPercent)) / 2  // Calculate the translation position
+				var/matrix/M = matrix().Scale(stamPercent, 1).Translate(-translatePos, 0) // Create and transform the matrix
+				animate(staminaVisual, transform = M, time = world.tick_lag) // Animate the stamina visual object
 
-
-
-
+client	// This proc just checks for the specified type (typeToFind) and returns it so we can use it in the above code.
+	proc	// In this case we're finding /Stamina_Visual which is our stamina bar.
+		findElementInVisContents(typeToFind, obj/container = mob.Interface_Overlay)
+			var/list/toCheck = list(container) // Initialize a list with the container as the starting point
+			while(toCheck.len) // Continue as long as there are elements to check
+				var/obj/element = toCheck[1] // Get the first element from the list
+				toCheck -= element // Remove the element from the list
+				if(istype(element, typeToFind)) // Check if the element matches the specified type
+					return element // Return the element if it matches
+				toCheck += element.vis_contents // Add the element's vis_contents to the list to be checked
+			return null // Return null if no matching element was found
 
 //Buttons are defined below.
+obj
 	buttons
 		icon = 'interface_button.dmi'
 		maptext_height = 24
@@ -41,9 +63,6 @@ obj
 		MouseExited()
 			alpha = 100
 			..()
-
-
-
 
 //These are our four different buttons.
 		Exercise 	//Exercise is a proc called when object verbs are used. We will re-design this later.
@@ -82,13 +101,6 @@ obj
 					new/obj/buttons/Kick(X, Y + 52),
 					new/obj/buttons/Talk(X, Y + 78),
 				)
-				
-
-
-
-
-
-
 
 obj		
 	resource_bar_holder

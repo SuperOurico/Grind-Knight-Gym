@@ -26,7 +26,10 @@ client
 
 
 	// This isn't the more intuitive system, so let's create a system using a simple camera manager.
-
+client
+	verb
+		Test_Resolution_Change(n as num, n2 as num)
+			camera.SetResolution(round(n, 32), round(n2, 32))
 
 client
 	var/camera/camera

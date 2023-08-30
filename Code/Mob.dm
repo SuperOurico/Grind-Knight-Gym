@@ -4,19 +4,11 @@ mob
 		..()
 		loc = locate(10, 6, 1)
 		playerList += src
-		client.screen.Add(Interface_Overlay)
 
-		//Add action buttons to the Interface_Overlay screen object.
-		Interface_Overlay.vis_contents.Add(new/obj/action_buttons/actions)
+		client.SetupHUD()	// Switched this to a proc so it's easier to organize. Check out Interface.dm.
 
-		//Add stamina bar and its holder to the Interface_Overlay screen object.
-		Interface_Overlay.vis_contents.Add(new/obj/resource_dynamic_bars/resource_values)
-		Interface_Overlay.vis_contents.Add(new/obj/resource_bars/resources)
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-		
 
 	Move()
 		if(canMove)
